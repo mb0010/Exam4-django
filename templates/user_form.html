@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>{% if user %}Edit User{% else %}Add New User{% endif %}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">{% if user %}Update{% else %}Save{% endif %}</button>
+    </form>
+    <a href="{% url 'user-list' %}">Back to User List</a>
+</body>
+</html>

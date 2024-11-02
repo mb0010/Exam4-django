@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% if question %}Edit Question{% else %}Add New Question{% endif %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>{% if question %}Edit Question{% else %}Add New Question{% endif %}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">{% if question %}Update{% else %}Save{% endif %}</button>
+    </form>
+    <a href="{% url 'question-list' %}">Back to Question List</a>
+</body>
+</html>

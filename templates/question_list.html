@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question List</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Question List</h1>
+    <ul>
+        {% for question in questions %}
+            <li>
+                <strong>{{ question.title }}</strong> - {{ question.description|truncatewords:20 }}
+                <a href="{% url 'question-detail' question.pk %}">View</a>
+                <a href="{% url 'question-update' question.pk %}">Edit</a>
+                <a href="{% url 'question-delete' question.pk %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'question-add' %}" class="btn">Add New Question</a>
+</body>
+</html>

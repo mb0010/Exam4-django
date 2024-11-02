@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Question</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <h1>Are you sure you want to delete this question?</h1>
+    <p><strong>{{ question.title }}</strong></p>
+    <p>{{ question.description }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn">Confirm Delete</button>
+    </form>
+    <a href="{% url 'question-list' %}">Back to Question List</a>
+</body>
+</html>
